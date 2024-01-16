@@ -15,23 +15,20 @@ fetchPokemonData();
 const jsonList = fetchPokemonData();
 const imageContainer = document.querySelector("body")
 
+
+
 const convertJson = (json) => {
-	const list = JSON.parse(json)
-	const pictures = Object.values(list.sprites)
-  const filteredPictures = pictures.filter((picture) => picture )
+  const filteredPictures = Object.values(JSON.parse(json).sprites).filter((picture) => picture )
   return filteredPictures
 }
-
 const picturesList = convertJson(jsonList);
 
-function displayImage(sprites) {
-	for (let i = 0; i < sprites.length; i ++)
-	{
-	const pokemonImg = document.createElement("img");
-	pokemonImg.classList.add("pokemon-img")
-	pokemonImg.src = sprites[i]
-	imageContainer.appendChild(pokemonImg)
-    console.log(sprites[i])
-  };	
+
+const displayImage = (sprites) => {
+	sprites.forEach((sprite) => {
+  const pokemonImg = document.createElement("img");
+  pokemonImg.src = sprite;
+  imageContainer.appendChild(pokemonImg);
+});	
 }
 displayImage(picturesList)
