@@ -2,19 +2,26 @@
 
 function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
   const numbers = [];
+  for (let i = startIndex; i <= stopIndex; i++) numbers.push(i);
+  
 
-  // Replace this comment and the next line with your code
-  console.log(startIndex, stopIndex, threeCallback, fiveCallback, numbers);
+  numbers.forEach(number => {
+    if (number % 3 === 0 && number % 5 === 0) {
+      threeCallback(number), fiveCallback(number);
+    } else if (number % 3 === 0) {
+      threeCallback(number);
+    } else if (number % 5 === 0) {
+      fiveCallback(number);
+    } 
+  });
 }
 
 function sayThree(number) {
-  // Replace this comment and the next line with your code
-  console.log(number);
+  console.log(`The number ${number} is divisible by 3`);
 }
 
 function sayFive(number) {
-  // Replace this comment and the next line with your code
-  console.log(number);
+  console.log(`The number ${number}is divisible by 5`);
 }
 
 threeFive(10, 15, sayThree, sayFive);
